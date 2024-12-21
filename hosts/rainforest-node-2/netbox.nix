@@ -34,8 +34,8 @@
         root * ${config.services.netbox.dataDir}/static
         file_server
       }
-      @notStatic not path /static*
-      reverse_proxy @notStatic ${config.services.netbox.listenAddress}:${toString config.services.netbox.port}
+      @server not path /static*
+      reverse_proxy @server ${config.services.netbox.listenAddress}:${toString config.services.netbox.port}
       encode gzip zstd
       log {
         level error
