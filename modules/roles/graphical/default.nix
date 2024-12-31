@@ -19,8 +19,6 @@ in
 
   programs.spicetify = {
     enable = true;
-    theme = spkgs.themes.bloom;
-    colorScheme = "Coffee";
     enabledExtensions = builtins.attrValues {
       inherit (spkgs.extensions)
         adblock
