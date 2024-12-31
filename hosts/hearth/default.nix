@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   boot = {
     kernelParams = [ "irqpoll" ];
@@ -29,6 +29,7 @@
       winetricks
       # android-studio
       act
+      libreoffice
       ;
   };
   programs.adb.enable = true;
@@ -41,14 +42,25 @@
 
   networking.networkmanager.enable = true;
 
-  services.desktopManager.plasma6 = {
-    enable = true;
-    enableQt5Integration = true;
+  imports = [ inputs.cosmic.nixosModules.default ];
+
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+  nix.settings = {
+    substituters = [ "https://cosmic.cachix.org/" ];
+    trusted-public-keys = [
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+    ];
   };
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+
+  # services.desktopManager.plasma6 = {
+  #   enable = true;
+  #   enableQt5Integration = true;
+  # };
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  # };
 
   services.fstrim.enable = true;
 
