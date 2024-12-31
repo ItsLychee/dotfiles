@@ -42,25 +42,14 @@
 
   networking.networkmanager.enable = true;
 
-  imports = [ inputs.cosmic.nixosModules.default ];
-
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-  nix.settings = {
-    substituters = [ "https://cosmic.cachix.org/" ];
-    trusted-public-keys = [
-      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-    ];
+  services.desktopManager.plasma6 = {
+    enable = true;
+    enableQt5Integration = true;
   };
-
-  # services.desktopManager.plasma6 = {
-  #   enable = true;
-  #   enableQt5Integration = true;
-  # };
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  # };
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
   # NOTE: Leave this, this seems to fix the issues with the current set kernel such as but not limited to:
   # - Stuttering app performance
   # - Elite Dangerous doesn't want to run
