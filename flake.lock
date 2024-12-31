@@ -926,11 +926,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1734445551,
-        "narHash": "sha256-4ePvh7Ciq3L9yvVrKftKZIahVI29gon5MWxMi6xgxfE=",
+        "lastModified": 1735625024,
+        "narHash": "sha256-Z+9+Q+dDAt9CDdp/xq10InevOUyGGYy/6d6Dj6Wkv2g=",
         "owner": "itslychee",
         "repo": "nvim",
-        "rev": "fa2faa318e3705b70ae6ca05e9d47d5d28153568",
+        "rev": "bb6ea1fd959f9ab06cadc71c0082e914fbe9d5fd",
         "type": "github"
       },
       "original": {

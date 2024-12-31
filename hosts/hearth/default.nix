@@ -61,6 +61,11 @@
   #   enable = true;
   #   wayland.enable = true;
   # };
+  # NOTE: Leave this, this seems to fix the issues with the current set kernel such as but not limited to:
+  # - Stuttering app performance
+  # - Elite Dangerous doesn't want to run
+  # - Bad audio
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.fstrim.enable = true;
 
