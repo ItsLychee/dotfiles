@@ -7,11 +7,6 @@
     email = "nope@nope.com";
   };
 
-  networking.firewall.allowedTCPPorts = [
-    443
-    80
-  ];
-
   services.nginx.virtualHosts.${config.services.frigate.hostname} = {
     enableACME = true;
     forceSSL = true;

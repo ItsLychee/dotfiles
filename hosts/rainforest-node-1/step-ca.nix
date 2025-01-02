@@ -11,11 +11,6 @@
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [
-    443
-    80
-  ];
-
   services.step-ca = {
     enable = true;
     intermediatePasswordFile = config.deployment.keys.step-ca.path;

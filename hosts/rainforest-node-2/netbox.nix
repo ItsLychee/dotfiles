@@ -45,10 +45,6 @@
       }
     '';
   };
-  networking.firewall.allowedTCPPorts = [
-    443
-    80
-  ];
 
   users.groups.netbox.members = [ config.services.caddy.user ];
 }
