@@ -30,7 +30,6 @@
       libreoffice
       # android-studio
       act
-      libreoffice
       ;
   };
   programs.adb.enable = true;
