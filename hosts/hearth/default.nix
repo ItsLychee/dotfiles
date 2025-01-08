@@ -27,6 +27,7 @@
       vesktop
       nixpkgs-review
       winetricks
+      libreoffice
       # android-studio
       act
       libreoffice
