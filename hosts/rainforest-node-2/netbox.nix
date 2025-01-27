@@ -16,6 +16,16 @@
       (toString ../../secrets/netbox-secret.gpg)
     ];
   };
+  deployment.keys.netbox-ldap= {
+    destDir = "/var/lib/secrets/netbox";
+    user = "netbox";
+    group = "netbox";
+    keyCommand = [
+      "gpg"
+      "--decrypt"
+      (toString ../../secrets/netbox-ldap.gpg)
+    ];
+  };
 
   services.netbox = {
     enable = true;
@@ -23,6 +33,9 @@
     settings = {
       CSRF_TRUSTED_ORIGINS = [ "https://netbox.ratlabs.co" ];
     };
+    enableLdap = true;
+    ldapConfigPath = config.deployment.keys.netbox-ldap.path;
+
     secretKeyFile = config.deployment.keys.netbox-secret.path;
   };
 
