@@ -32,6 +32,25 @@
     package = pkgs.netbox;
     settings = {
       CSRF_TRUSTED_ORIGINS = [ "https://netbox.ratlabs.co" ];
+      LOGGING = {
+        "version"= 1;
+        "disable_existing_loggers"= false;
+        "handlers"= {
+            "netbox_auth_log"= {
+                "level"= "DEBUG";
+                "class"= "logging.handlers.RotatingFileHandler";
+                "filename"= "/var/lib/netbox/debug.log";
+                "maxBytes"= 1024 * 500;
+                "backupCount"= 5;
+            };
+        };
+        "loggers"= {
+            "django_auth_ldap"= {
+                "handlers"= ["netbox_auth_log"];
+                "level"= "DEBUG";
+            };
+        };
+        };
     };
     enableLdap = true;
     ldapConfigPath = config.deployment.keys.netbox-ldap.path;
