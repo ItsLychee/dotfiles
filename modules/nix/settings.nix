@@ -34,15 +34,6 @@ in
       keep-derivations = true;
       accept-flake-config = false;
       flake-registry = "";
-      substituters = [
-        "https://cache.wires.cafe/lychee-config"
-      ];
-      trusted-substituters = [
-        "https://cache.wires.cafe/lychee-config"
-      ];
-      trusted-public-keys = [
-        "lychee-config:sFDIaZ98OL1yH6m3YWg4WMkwZESW1QzpAXzLOautme0="
-      ];
       trusted-users = [
         "@wheel"
         "root"

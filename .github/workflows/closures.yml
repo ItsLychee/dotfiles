@@ -43,18 +43,18 @@ jobs:
         with:
           extra_nix_config: |
              extra-platforms = aarch64-linux i686-linux
-             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= lychee-config:sFDIaZ98OL1yH6m3YWg4WMkwZESW1QzpAXzLOautme0=
-             trusted-substituters = https://cache.wires.cafe/lychee-config https://cache.nixos.org
-             substituters = https://cache.wires.cafe/lychee-config  https://cache.nixos.org
+             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+             trusted-substituters = https://cache.nixos.org
+             substituters = https://cache.nixos.org
 
       - uses: actions/checkout@v4
       - name: Build ${{ matrix.node }}
         run: |
           nix run nixpkgs#colmena -- build --keep-result --no-build-on-target -v --on ${{ matrix.node }}
-      - name: Attic Setup
-        run: |
-          nix profile install nixpkgs#attic-client
-          attic login wires https://cache.wires.cafe ${{ secrets.ATTIC_TOKEN }}
-      - name: Push closure to Attic
-        run: |
-          attic push lychee-config .gcroots/*
+      # - name: Attic Setup
+      #   run: |
+      #     nix profile install nixpkgs#attic-client
+      #     attic login wires https://cache.wires.cafe ${{ secrets.ATTIC_TOKEN }}
+      # - name: Push closure to Attic
+      #   run: |
+      #     attic push lychee-config .gcroots/*
