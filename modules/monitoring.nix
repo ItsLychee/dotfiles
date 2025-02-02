@@ -2,7 +2,7 @@
 {
 
   services.promtail = {
-    enable = true;
+    # enable = true;
     configuration = {
       clients =
         let

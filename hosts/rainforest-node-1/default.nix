@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   inputs,
   pkgs,
   ...
@@ -20,4 +21,34 @@
     allowedTCPPorts = [ 9050 ];
   };
 
+  services.promtail.configuration.scrape_configs = lib.singleton {
+    job_name = "syslog-ng";
+    syslog = {
+        listen_address = "127.0.0.1:1514";
+        label_structured_data = true;
+        labels.job = "syslog";
+    };
+    relabel_configs = lib.singleton {
+      source_labels = [ "__syslog_message_hostname" ];
+      target_label = "host";
+    };
+  };
+
+
+  networking.firewall.allowedUDPPorts = [ 514 ];
+
+  services.syslog-ng = {
+    enable = true;
+    extraConfig = ''
+        destination d_loki {
+          syslog("127.0.0.1" transport("tcp") port(1514));
+        };
+        log {
+            source {
+              network();
+            };
+            destination(d_loki);
+        };
+    '';
+  };
 }

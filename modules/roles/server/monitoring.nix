@@ -1,6 +1,6 @@
 {
   services.prometheus.exporters.node = {
-    enable = true;
+    # enable = true;
     enabledCollectors = [ "systemd" ];
     port = 9002;
   };
