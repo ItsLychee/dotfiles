@@ -24,13 +24,16 @@
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       nix-tree
-      vesktop
       nixpkgs-review
       winetricks
       libreoffice
       # android-studio
       act
       ;
+    vesktop = (pkgs.vesktop.override {
+      withMiddleClickScroll = true;
+      withSystemVencord = true;
+    });
   };
   programs.adb.enable = true;
   virtualisation.docker.enable = true;
