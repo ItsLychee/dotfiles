@@ -1,32 +1,20 @@
 { pkgs, ... }:
 {
-  boot = {
-    loader.systemd-boot.enable = true;
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "usb_storage"
-      "sd_mod"
-      "sdhci_pci"
-    ];
-    kernelModules = [ "kvm-intel" ];
-  };
+  boot.loader.systemd-boot.enable = true;
+  hey.hostKeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAWO20sj075BlyT08kubpDUpbFFKjrz1YNo2CfTeVPWv";
+  networking.networkmanager.enable = true;
+  programs.wireshark.enable = true;
 
-  hey = {
-    hostKeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIINnq/AyE9T+4uA4/707mECHbt+5ZzeaK3zFW4AUEMvi";
-    users.lychee = {
-      packages = [
-        pkgs.firefox
-        pkgs.minicom
-      ];
-    };
-  };
-
-  services.xserver = {
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    wayland.enable = true;
     enable = true;
-    displayManager.lightdm.enable = true;
-    desktopManager.lxqt.enable = true;
   };
+  environment.systemPackages = [
+    (pkgs.vesktop.override {
+      withMiddleClickScroll = true;
+      withSystemVencord = true;
+    })
+  ];
 
-  # hey cutie, don't touch!
-  system.stateVersion = "24.05";
 }
