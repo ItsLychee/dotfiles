@@ -15,6 +15,7 @@
       withMiddleClickScroll = true;
       withSystemVencord = true;
     })
+    pkgs.teams-for-linux
   ];
 
 }
