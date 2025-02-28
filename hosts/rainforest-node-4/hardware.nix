@@ -4,14 +4,9 @@
 {
   config,
   lib,
-  modulesPath,
   ...
 }:
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
-
   boot = {
     kernelParams = [ "intel_iommu=on" ];
     initrd.availableKernelModules = [
