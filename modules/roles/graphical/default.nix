@@ -48,13 +48,12 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    firefox
+    librewolf
     colmena
     wl-clipboard
     swappy
     mpv
     celeste64
-    attic-client
     remmina
   ];
 }

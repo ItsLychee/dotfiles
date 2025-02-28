@@ -2,16 +2,13 @@
   inputs = {
     nvim.url = "github:itslychee/nvim";
     colmena.url = "github:zhaofengli/colmena";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/d70bd19e0a38ad4790d3913bf08fcbfc9eeca507";
-    conduwuit.url = "github:girlbossceo/conduwuit?ref=v0.4.6";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nextcloud-caddy.url = "github:onny/nixos-nextcloud-testumgebung/56a5379b83ea9c03d4d16daf27ac91e1ba6b020f";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nextcloud-caddy.flake = false;
   };
   outputs =
     {
-      self,
       nixpkgs,
       colmena,
       ...

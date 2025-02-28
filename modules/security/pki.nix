@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
 
   security.pki.certificates = [
